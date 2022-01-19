@@ -1,13 +1,24 @@
 Package: CoordGeomR
-Title: What the Package Does (One Line, Title Case)
+Title: A simple coordinate geometry helper package.
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Arlin",
+           family = "Cherian",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "arlin.cherian@ubc.ca"),
+    person(given = "Jordan",
+           family = "Casoli",
+           role = c("aut", "cre"),
+           email = "casolijordan@gmail.com"),
+    person(given = "Nico",
+           family = "Van den Hoodd",
+           role = c("aut", "cre"),
+           email = "nicovandenhooff@gmail.com"),
+    person(given = "Zheren",
+           family = "Xu",
+           role = c("aut", "cre"),
+           email = "xuzheren1998@gmail.com"),
+Description: This starter package allows users to perform various geometric operations like calculate distance between them two parallel lines, distance between two n dimensional vectors, intersection of lines in 3-Dimensional space and so on. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
