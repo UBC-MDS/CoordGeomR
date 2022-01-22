@@ -52,5 +52,37 @@ is_orthogonal <- function(m1, m2) {}
 #' 4
 #' get_distance(x1, x2, metric="Minkowski", 3)
 #' 6.3496
-get_distance <- function(x1, x2, metric="Euclidean", p=NULL) {
+get_distance <- function(x1, x2, metric="Euclidean", p=NULL) {}
   
+#' Determines whether two infinite lines intersect in 3-dimensional space.
+
+#' Note that if two parallel lines are provided, they will be considered as NOT intersecting. 
+#' Also note that this function expects integer values for x, y, z coordinates. Values will be rounded 
+#' if integer values are not provided. 
+
+#' This algorithm uses the following idea to test for intersection: Two (non parallel) lines intersect 
+#' in 3d space if and only if they are coplanar.  
+#'
+#' @param m1 The slope of the first line.
+#' @param m2 The slope of the second line.
+#' @param b1 Any point on the first line.
+#' @param b2 Any point on the second line.
+#'
+#' @return A boolean representing whether the two lines intersect or not
+#' @export
+#'
+#' @examples
+#' m1 <- c(1, 0, 0)
+#' m2 <- c(0, 1, 0)
+#' b1 <- c(0, 0, 0)
+#' b2 <- c(0, 0, 0)
+#' is_intersection_3d(m1, b1, m2, b2)
+#' TRUE
+#' 
+#' m3 <- c(1, 3, -1)
+#' m4 <- c(2, 1, 4)
+#' b3 <- c(0, -2, 4)
+#' b4 <- c(0, 3, -3)
+#' is_intersection_3d(m3, b3, m4, b4)
+#' FALSE
+is_intersection_3d <- function(m1, b1, m2, b2){}
