@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' dist_pll_lines_2d(3.0, 4.5, 2.5)
+#' dist_pll_lines_2d(3.0, 4.5, 2.5)∂
 #' d <- "0.6324"
 #' dist_pll_lines_2d(-4, 11, 23)
 #' d <- "2.9104"
@@ -51,8 +51,47 @@ is_orthogonal <- function(m1, m2) {}
 #' get_distance(x1, x2, metric="Chebyshev")
 #' 4
 #' get_distance(x1, x2, metric="Minkowski", 3)
-#' 6.3496
-get_distance <- function(x1, x2, metric="Euclidean", p=NULL) {}
+#' 6.3496042078728
+get_distance <- function(x1, x2, metric = "Euclidean", p = NULL) {
+    # cast to lower for flexibility
+    metric <- tolower(metric)
+
+    # verify distance metric
+    if (!(metric %in% c("euclidean", "manhattan", "chebyshev", "minkowski"))) {
+        stop("Invalid distance metric")
+    }
+
+    # verify that vectors numeric
+    if (!is.numeric(x1) | !is.numeric(x2)) {
+        stop("x1 and x2 must be numeric")
+    }
+
+    # verify dimensions of vectors match
+    if (length(x1) != length(x2)) {
+        stop("x1 and x2 must be the same length")
+    }
+
+    # verify p if minkowski distance is metric
+    if (metric == "minkowski") {
+        if (!is.numeric(p)) {
+        stop("p must be numeric when distance is set to minkowski")
+        }
+    }
+
+    # calculate and return distance
+    if (identical(x1, x2)) {
+        return(0)
+    } else if (metric == "euclidean") {
+        return(sqrt(sum((x1 - x2)^2)))
+    } else if (metric == "manhattan") {
+        return(sum(abs(x1 - x2)))
+    } else if (metric == "chebyshev") {
+        return(max(abs(x1 - x2)))
+    } else if (metric == "minkowski") {
+        return(sum((abs(x1 - x2)^p))^(1 / p))
+    }
+}
+
   
 #' Determines whether two infinite lines intersect in 3-dimensional space.
 
