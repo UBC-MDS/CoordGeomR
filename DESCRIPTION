@@ -1,5 +1,5 @@
 Package: CoordGeomR
-Title: A simple coordinate geometry helper package.
+Title: A simple coordinate geometry helper package
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Arlin",
