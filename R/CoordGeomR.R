@@ -15,8 +15,23 @@
 #' dist_pll_lines_2d(-4, 11, 23)
 #' d <- "2.9104"
 dist_pll_lines_2d <- function(slope, b1, b2){
-    
+  # verify slope is not non-numerical input 
+  if(!is.numeric(slope)){
+    stop("Cannot calculate distance for non-numerical slope inputs")
+  }
+  # verify intercept line 1 is not non-numerical input 
+  if(!is.numeric(b1)){
+    stop("Cannot calculate distance for non-numerical line 1 intercept or b1 inputs")
+  }
+  # verify intercept line 2 is not non-numerical input 
+  if(!is.numeric(b2)){
+    stop("Cannot calculate distance for non-numerical line 2 intercept or b2 inputs")
+  }
+  
+  d <- abs(b2 - b1) / sqrt(slope^2 + 1)
+  return(d)
 }
+
 #' Determines whether two infinite lines are perpendicular in n-dimensional space.
 #'
 #' @param m1 A numeric vector corresponds to a n-dimensional vector ⟨mx1, my1, mz1, ...⟩ describing the direction vector of line 1.
