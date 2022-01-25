@@ -1,3 +1,4 @@
+library(pracma)
 
 #' Find the distance between two parallel lines in 2-D space.
 #'
@@ -15,8 +16,23 @@
 #' dist_pll_lines_2d(-4, 11, 23)
 #' d <- "2.9104"
 dist_pll_lines_2d <- function(slope, b1, b2){
-    
+  # verify slope is not non-numerical input 
+  if(!is.numeric(slope)){
+    stop("Cannot calculate distance for non-numerical slope inputs")
+  }
+  # verify intercept line 1 is not non-numerical input 
+  if(!is.numeric(b1)){
+    stop("Cannot calculate distance for non-numerical line 1 intercept or b1 inputs")
+  }
+  # verify intercept line 2 is not non-numerical input 
+  if(!is.numeric(b2)){
+    stop("Cannot calculate distance for non-numerical line 2 intercept or b2 inputs")
+  }
+  
+  d <- abs(b2 - b1) / sqrt(slope^2 + 1)
+  return(d)
 }
+
 #' Determines whether two infinite lines are perpendicular in n-dimensional space.
 #'
 #' @param m1 A numeric vector corresponds to a n-dimensional vector ⟨mx1, my1, mz1, ...⟩ describing the direction vector of line 1.
@@ -124,4 +140,37 @@ get_distance <- function(x1, x2, metric = "Euclidean", p = NULL) {
 #' b4 <- c(0, 3, -3)
 #' is_intersection_3d(m3, b3, m4, b4)
 #' FALSE
-is_intersection_3d <- function(m1, b1, m2, b2){}
+is_intersection_3d <- function(m1, b1, m2, b2){
+  
+  # Ensure all inputs are numeric
+  if (!is.numeric(m1) | !is.numeric(m2) | !is.numeric(b1) | !is.numeric(b2)){
+    stop("Input values must be numeric")
+  } 
+  
+  # Ensure inputs of of length 3
+  if (length(m1) != 3 | length(m2) !=3 | length(b1) != 3 | length(b2) != 3){
+    stop("All input vectors must be of length 3")
+  }
+  
+  # This function rounds floats to integers before testing for intersection
+  m1 <- m1 |> round()
+  m2 <- m2 |> round()
+  b1 <- b1 |> round()
+  b2 <- b2 |> round()
+  
+  # Check if lines are parallel
+  if (identical(m1, m2)){
+    return(FALSE)
+  }
+  
+  # Lines intersect if and only if they are coplanar
+  x <- cross(m1, m2)
+  disp <- b2 - b1
+  dot <- dot <- x[1]*disp[1] + x[2]*disp[2] + x[3]*disp[3]
+  if (dot == 0){
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+  
+}
