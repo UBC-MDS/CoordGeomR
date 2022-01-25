@@ -1,3 +1,5 @@
+library(testthat)
+
 # ------ tests the distance calculations for get_distance with integer input ------ 
 test_that("Error in distance calculation for equal vectors", {
     expect_equal(0, get_distance(x1, x1))
@@ -59,6 +61,29 @@ test_that("Mismatched dimensions should throw error", {
 
 test_that("Invalid p for minkowski distance should throw error", {
     expect_error(get_distance(x1, x2, "minkowski", "1"))
+})
+
+
+# ------ tests is_intersection_3d for integer input -------
+test_that("Error in is_intersection_3d for integer input", {
+  expect_equal(TRUE, is_intersection_3d(c(1, 0, 0), c(0, 0, 0), c(0, 1, 0), c(0, 0, 0)))
+  expect_equal(TRUE, is_intersection_3d(c(1, 0, 0), c(0, 0, 0), c(0, 1, 0), c(1, 1, 0)))
+  expect_equal(FALSE, is_intersection_3d(c(1, 1, 1), c(0, 0, 0), c(1, 1, 1), c(1, 1, 1)))
+  expect_equal(FALSE, is_intersection_3d(c(1, 3, -1), c(0, -2, 4), c(2, 1, 4), c(0, 3, -3)))
+})
+
+# ------ tests is_intersection_3d for float input ------
+test_that("Error in is_intersection_3d for float input", {
+  expect_equal(TRUE, is_intersection_3d(c(1.2, 0.3, 0.4), c(0, 0.1, 0.1), c(0, 1, 0), c(0, 0, 0)))
+  expect_equal(TRUE, is_intersection_3d(c(1.3, 0.3, 0), c(0, 0, 0), c(0, 0.9, 0), c(0.7, 1.3, 0)))
+  expect_equal(FALSE, is_intersection_3d(c(1.1, 0.8, 0.9), c(0, 0, 0), c(1.2, 0.8, 1.4), c(1, 1, 1)))
+  expect_equal(FALSE, is_intersection_3d(c(1.1, 3.2, -1.3), c(0.0, -2.4, 4.2), c(2.1, 1, 4), c(0.2, 3.3, -3.0)))
+})
+
+# ------ tests is_intersection_3d for invalid input ------
+test_that("Error in is_intersection_3d for float input", {
+  expect_error(is_intersection_3d(c('1.2', '0.3', '0.4'), c(0, 0.1, 0.1), c(0, 1, 0), c(0, 0, 0)))
+  expect_error(is_intersection_3d(c(1.2, 0.3), c(0, 0.1, 0.1), c(0, 1, 0), c(0, 0, 0)))
 })
 
 # ------ tests the distance calculations for dist_pll_lines_2d throws errors with non-numeric inputs ------ 
