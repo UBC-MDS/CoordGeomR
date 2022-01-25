@@ -1,3 +1,11 @@
+# ------ inputs for get_distance tests ------ 
+
+x1 <- c(1, 2, 3, 4)
+x2 <- c(5, 6, 7, 8)
+x3 <- c(9.6, -0.6, 7)
+x4 <- c(1.23, 5.7, -3)
+x5 <- c(0)
+
 # ------ tests the distance calculations for get_distance with integer input ------ 
 test_that("Error in distance calculation for equal vectors", {
     expect_equal(0, get_distance(x1, x1))
