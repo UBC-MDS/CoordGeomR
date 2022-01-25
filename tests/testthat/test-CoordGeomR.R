@@ -63,6 +63,7 @@ test_that("Invalid p for minkowski distance should throw error", {
     expect_error(get_distance(x1, x2, "minkowski", "1"))
 })
 
+
 # ------ tests is_intersection_3d for integer input -------
 test_that("Error in is_intersection_3d for integer input", {
   expect_equal(TRUE, is_intersection_3d(c(1, 0, 0), c(0, 0, 0), c(0, 1, 0), c(0, 0, 0)))
@@ -83,4 +84,34 @@ test_that("Error in is_intersection_3d for float input", {
 test_that("Error in is_intersection_3d for float input", {
   expect_error(is_intersection_3d(c('1.2', '0.3', '0.4'), c(0, 0.1, 0.1), c(0, 1, 0), c(0, 0, 0)))
   expect_error(is_intersection_3d(c(1.2, 0.3), c(0, 0.1, 0.1), c(0, 1, 0), c(0, 0, 0)))
+})
+
+# ------ tests the distance calculations for dist_pll_lines_2d throws errors with non-numeric inputs ------ 
+# testing non-numeric slopes
+test_that("Non-numeric values for slope should throw an error", {
+  expect_error(dist_pll_lines_2d("slope", 4, -1))
+  expect_error(dist_pll_lines_2d(list(4), 4, -1))
+})
+
+# testing non-numeric intercept b1
+test_that("Non-numeric values for b1 should throw an error", {
+  expect_error(dist_pll_lines_2d(2, "intercept", -1))
+  expect_error(dist_pll_lines_2d(2, list(4, 3, 2), -1))
+})
+
+# testing non-numeric intercept b2
+test_that("Non-numeric values for b2 should throw an error", {
+  expect_error(dist_pll_lines_2d(2, 4, "intercept"))
+  expect_error(dist_pll_lines_2d(2, 4, list("a", 1, 2)))
+})
+
+# testing distance calculations
+test_that("Error in distance calculation", {
+  expect_equal(dist_pll_lines_2d(0, 1, 2), 1, tolerance = 1)
+  expect_equal(2.24, round(dist_pll_lines_2d(0, 1, 2), 2))
+})
+
+# testing distance calculation is just a numerical return value
+test_that("Distance shouldn't have any vector names in the output", {
+  expect_named(dist_pll_lines_2d(2, 4, -1), NULL)
 })
