@@ -1,4 +1,5 @@
 library(testthat)
+library(pracma)
 
 # ------ tests the distance calculations for get_distance with integer input ------ 
 test_that("Error in distance calculation for equal vectors", {
