@@ -118,6 +118,8 @@ get_distance <- function(x1, x2, metric = "Euclidean", p = NULL) {
 #' This algorithm uses the following idea to test for intersection: Two (non parallel) lines intersect 
 #' in 3d space if and only if they are coplanar.  
 #'
+#' @import pracma
+#'
 #' @param m1 The slope of the first line.
 #' @param m2 The slope of the second line.
 #' @param b1 Any point on the first line.
