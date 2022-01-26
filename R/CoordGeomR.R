@@ -11,7 +11,7 @@ library(pracma)
 #' @export
 #'
 #' @examples
-#' dist_pll_lines_2d(3.0, 4.5, 2.5)∂
+#' dist_pll_lines_2d(3.0, 4.5, 2.5)
 #' d <- "0.6324"
 #' dist_pll_lines_2d(-4, 11, 23)
 #' d <- "2.9104"

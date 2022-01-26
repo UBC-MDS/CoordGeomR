@@ -1,4 +1,5 @@
 library(testthat)
+library(pracma)
 
 # ------ inputs for get_distance tests ------ 
 x1 <- c(1, 2, 3, 4)
@@ -115,7 +116,7 @@ test_that("Non-numeric values for b2 should throw an error", {
 # testing distance calculations
 test_that("Error in distance calculation", {
   expect_equal(dist_pll_lines_2d(0, 1, 2), 1, tolerance = 1)
-  expect_equal(2.24, round(dist_pll_lines_2d(0, 1, 2), 2))
+  expect_equal(2.24, round(dist_pll_lines_2d(2, 4, -1), 2))
 })
 
 # testing distance calculation is just a numerical return value
