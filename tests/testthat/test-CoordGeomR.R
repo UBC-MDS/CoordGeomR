@@ -123,3 +123,23 @@ test_that("Error in distance calculation", {
 test_that("Distance shouldn't have any vector names in the output", {
   expect_named(dist_pll_lines_2d(2, 4, -1), NULL)
 })
+
+# ---------------------- tests for is_orthogonal ---------------------------
+# ------ tests invalid inputs for is_orthogonal ------ 
+test_that("Invalid inputs", {
+  expect_error(is_orthogonal(c('a', 'b', 'c'), c('d', 'e', 'f')))
+  expect_error(is_orthogonal(c(0), c(1)))
+  expect_error(is_orthogonal(c(0, 1), c(1, 2, 3)))
+})
+# ------ tests is_orthogonal with integer input ------
+test_that("Error in is_orthogonal for integer input", {
+  expect_equal(TRUE, is_orthogonal(c(0, 0, 1), c(1, 0, 0)))
+  expect_equal(FALSE, is_orthogonal(c(1, 3), c(2, -1)))
+  expect_equal(TRUE, is_orthogonal(c(9, 9, 9, 9, 9), c(2, -2, 2, -2, 0)))
+})
+# ------ tests is_orthogonal with integer input ------ 
+test_that("Error in is_orthogonal for float input", {
+  expect_equal(TRUE, is_orthogonal(c(1.2, -2.0, 5.5), c(-10.0, 5.0, 4.0)))
+  expect_equal(TRUE, is_orthogonal(c(1.1, 3.5), c(4.3, -1.35142857143)))
+  expect_equal(FALSE, is_orthogonal(c(1.1, 3.5), c(4.3, -1.35)))
+})
