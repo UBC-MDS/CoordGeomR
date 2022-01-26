@@ -45,7 +45,29 @@ dist_pll_lines_2d <- function(slope, b1, b2){
 #' m1 <- c(1, 0, 0)
 #' m2 <- c(0, 1, 0)
 #' is_orthogonal(m1, m2)
-is_orthogonal <- function(m1, m2) {}
+is_orthogonal <- function(m1, m2) {
+  # All inputs should be numeric
+  if (!is.numeric(m1) | !is.numeric(m2)){
+    stop("Input values must be numeric")
+  }
+  
+  # Verify valid inputs
+  if (length(m1) < 2 | length(m2) < 2){
+    stop("The dimension of inputs must be at least 2")
+  }
+  
+  # Two lines should have the same length
+  if (length(m1) != length(m2)){
+    stop("m1 and m2 must be the same length")
+  }
+  
+  if (round(sum(m1*m2), 10) == 0) {
+    return(TRUE)
+  }
+  else {
+    return(FALSE)
+  }
+}
 
 #' Calculates the distance between two n dimensional vectors.
 #'
