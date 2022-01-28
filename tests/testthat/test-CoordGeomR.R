@@ -1,74 +1,74 @@
 library(testthat)
 library(pracma)
 
-# ------ inputs for get_distance tests ------ 
+# ------ inputs for get_distance tests ------
 x1 <- c(1, 2, 3, 4)
 x2 <- c(5, 6, 7, 8)
 x3 <- c(9.6, -0.6, 7)
 x4 <- c(1.23, 5.7, -3)
 x5 <- c(0)
 
-# ------ tests the distance calculations for get_distance with integer input ------ 
+# ------ tests the distance calculations for get_distance with integer input ------
 test_that("Error in distance calculation for equal vectors", {
-    expect_equal(0, get_distance(x1, x1))
+  expect_equal(0, get_distance(x1, x1))
 })
 
 test_that("Error in Euclidean distance calculation", {
-    expect_equal(8, get_distance(x1, x2, metric = "Euclidean"))
+  expect_equal(8, get_distance(x1, x2, metric = "Euclidean"))
 })
 
 test_that("Error in Manhattan distance calculation", {
-    expect_equal(16, get_distance(x1, x2, metric = "Manhattan"))
+  expect_equal(16, get_distance(x1, x2, metric = "Manhattan"))
 })
 
 test_that("Error in Chebyshev distance calculation", {
-    expect_equal(4, get_distance(x1, x2, metric = "Chebyshev"))
+  expect_equal(4, get_distance(x1, x2, metric = "Chebyshev"))
 })
 
 test_that("Error in Minkowski distance calculation", {
-    expect_equal(6.35, round(get_distance(x1, x2, metric = "Minkowski", 3), 2))
+  expect_equal(6.35, round(get_distance(x1, x2, metric = "Minkowski", 3), 2))
 })
 
-# ------ tests the distance calculations for get_distance with float input ------ 
+# ------ tests the distance calculations for get_distance with float input ------
 test_that("Error in distance calculation for equal vectors", {
-    expect_equal(0, get_distance(x3, x3))
+  expect_equal(0, get_distance(x3, x3))
 })
 
 test_that("Error in Euclidean distance calculation", {
-    expect_equal(14.48, round(get_distance(x3, x4, metric = "Euclidean"), 2))
+  expect_equal(14.48, round(get_distance(x3, x4, metric = "Euclidean"), 2))
 })
 
 test_that("Error in Manhattan distance calculation", {
-    expect_equal(24.67, round(get_distance(x3, x4, metric = "Manhattan"), 2))
+  expect_equal(24.67, round(get_distance(x3, x4, metric = "Manhattan"), 2))
 })
 
 test_that("Error in Chebyshev distance calculation", {
-    expect_equal(10, round(get_distance(x3, x4, metric = "Chebyshev"), 2))
+  expect_equal(10, round(get_distance(x3, x4, metric = "Chebyshev"), 2))
 })
 
 test_that("Error in Minkowski distance calculation", {
-    expect_equal(5.94, round(get_distance(x3, x4, metric = "Minkowski", -5), 2))
+  expect_equal(5.94, round(get_distance(x3, x4, metric = "Minkowski", -5), 2))
 })
 
-# ------ tests that get_distance raises the right exceptions for invalid input ------ 
+# ------ tests that get_distance raises the right exceptions for invalid input ------
 test_that("Invalid distance metric should throw error", {
-    expect_error(get_distance(x1, x2, metric = "invalid"))
+  expect_error(get_distance(x1, x2, metric = "invalid"))
 })
 
 test_that("Invalid x1 type should throw error", {
-    expect_error(get_distance(c("a"), x2))
+  expect_error(get_distance(c("a"), x2))
 })
 
 test_that("Invalid x2 type should throw error", {
-    expect_error(get_distance(x1, "a"))
+  expect_error(get_distance(x1, "a"))
 })
 
 test_that("Mismatched dimensions should throw error", {
-    expect_error(get_distance(x1, x3))
+  expect_error(get_distance(x1, x3))
 })
 
 test_that("Invalid p for minkowski distance should throw error", {
-    expect_error(get_distance(x1, x2, "minkowski", "1"))
+  expect_error(get_distance(x1, x2, "minkowski", "1"))
 })
 
 
@@ -90,11 +90,11 @@ test_that("Error in is_intersection_3d for float input", {
 
 # ------ tests is_intersection_3d for invalid input ------
 test_that("Error in is_intersection_3d for float input", {
-  expect_error(is_intersection_3d(c('1.2', '0.3', '0.4'), c(0, 0.1, 0.1), c(0, 1, 0), c(0, 0, 0)))
+  expect_error(is_intersection_3d(c("1.2", "0.3", "0.4"), c(0, 0.1, 0.1), c(0, 1, 0), c(0, 0, 0)))
   expect_error(is_intersection_3d(c(1.2, 0.3), c(0, 0.1, 0.1), c(0, 1, 0), c(0, 0, 0)))
 })
 
-# ------ tests the distance calculations for dist_pll_lines_2d throws errors with non-numeric inputs ------ 
+# ------ tests the distance calculations for dist_pll_lines_2d throws errors with non-numeric inputs ------
 # testing non-numeric slopes
 test_that("Non-numeric values for slope should throw an error", {
   expect_error(dist_pll_lines_2d("slope", 4, -1))
@@ -125,9 +125,9 @@ test_that("Distance shouldn't have any vector names in the output", {
 })
 
 # ---------------------- tests for is_orthogonal ---------------------------
-# ------ tests invalid inputs for is_orthogonal ------ 
+# ------ tests invalid inputs for is_orthogonal ------
 test_that("Invalid inputs", {
-  expect_error(is_orthogonal(c('a', 'b', 'c'), c('d', 'e', 'f')))
+  expect_error(is_orthogonal(c("a", "b", "c"), c("d", "e", "f")))
   expect_error(is_orthogonal(c(0), c(1)))
   expect_error(is_orthogonal(c(0, 1), c(1, 2, 3)))
 })
@@ -137,7 +137,7 @@ test_that("Error in is_orthogonal for integer input", {
   expect_equal(FALSE, is_orthogonal(c(1, 3), c(2, -1)))
   expect_equal(TRUE, is_orthogonal(c(9, 9, 9, 9, 9), c(2, -2, 2, -2, 0)))
 })
-# ------ tests is_orthogonal with integer input ------ 
+# ------ tests is_orthogonal with integer input ------
 test_that("Error in is_orthogonal for float input", {
   expect_equal(TRUE, is_orthogonal(c(1.2, -2.0, 5.5), c(-10.0, 5.0, 4.0)))
   expect_equal(TRUE, is_orthogonal(c(1.1, 3.5), c(4.3, -1.35142857143)))
