@@ -1,5 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![codecov](https://codecov.io/gh/UBC-MDS/CoordGeomR/branch/main/graph/badge.svg?token=kVjSWrGYrW)](https://codecov.io/gh/UBC-MDS/CoordGeomR)
 
 # CoordGeomR
 
