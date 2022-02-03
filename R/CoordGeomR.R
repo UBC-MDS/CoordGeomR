@@ -176,10 +176,10 @@ is_intersection_3d <- function(m1, b1, m2, b2) {
   }
 
   # This function rounds floats to integers before testing for intersection
-  m1 <- m1 |> round()
-  m2 <- m2 |> round()
-  b1 <- b1 |> round()
-  b2 <- b2 |> round()
+  m1 <- round(m1)
+  m2 <- round(m2)
+  b1 <- round(b1)
+  b2 <- round(b2)
 
   # Check if lines are parallel
   if (identical(m1, m2)) {
