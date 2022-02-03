@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/UBC-MDS/CoordGeomR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UBC-MDS/CoordGeomR/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/gh/UBC-MDS/CoordGeomR/branch/main/graph/badge.svg?token=kVjSWrGYrW)](https://codecov.io/gh/UBC-MDS/CoordGeomR)
+[![R-CMD-check](https://github.com/UBC-MDS/CoordGeomR/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/CoordGeomR/actions)
 <!-- badges: end -->
 
 A simple coordinate geometry helper package. This package is developed
@@ -34,14 +33,8 @@ IntersectLines which finds the intersection of two lines.
 
 ## Installation
 
-You can install the released version of CoordGeomR from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("CoordGeomR")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
