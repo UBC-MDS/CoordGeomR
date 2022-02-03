@@ -4,6 +4,8 @@
 # CoordGeomR
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/UBC-MDS/CoordGeomR/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/CoordGeomR/actions)
 <!-- badges: end -->
 
 A simple coordinate geometry helper package. This package is developed
@@ -28,16 +30,6 @@ R ecosystem. There is an existing package called
 that executes similar functions. For example, the package has functions
 like DistanceLines that computes distance between two lines and
 IntersectLines which finds the intersection of two lines.
-
-## Features
-
-Function 1 `dist_pll_lines_2d`: This function allows a user to calculate the distance between two parallel lines. This is the distance between the points where a perpendicular line intersects between the two parallel lines. This function will find that distance (d).
-
-Function 2 `get_distance`: This function allows a user to calculate the the distance between two n dimensional vectors. Possible metrics that can be used with this function includes: Euclidean, Manhattan, Chebyshev, or Minkowski
-
-Function 3 `is_intersection_3d`: This function allows a user to determine whether two infinite lines intersect in 3-dimensional space. The function will return True or False based on the input arguments.
-
-Function 4 `is_orthogonal`: This function allows a user to determine whether two infinite lines are perpendicular in n-dimensional space. The function will return True or False based on the input arguments.
 
 ## Installation
 
