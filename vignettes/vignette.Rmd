@@ -1,0 +1,87 @@
+---
+title: "Introduction to CoordGeom"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This starter package allows users to perform various geometric operations like calculate distance between two parallel lines, distance between two n dimensional vectors, intersection of lines in 3-Dimensional space and determine if two infinite lines are perpendicular in n-dimensional space. Our motivation in creating this package was to allow users with minimal experience in R programming to be able to perform these geometric calculations easily.
+
+```{r setup}
+library(CoordGeomR)
+library(pracma)
+```
+
+### Determine whether two lines intersect with `is_intersection_3d()`
+
+CoordGeomR makes it easy to determine whether two lines intersect in 3d space.
+
+Note that if two parallel lines are provided, they will be considered as NOT intersecting. Also note that this function expects integer values for x, y, z coordinates. Values will be rounded if integer values are not provided.
+
+This algorithm uses the following idea to test for intersection: Two (non parallel) lines intersect in 3d space if and only if they are coplanar.
+
+Here is an example:
+
+```{r intersection}
+m1 <- c(1, 0, 0)
+b1 <- c(0, 0, 0)
+m2 <- c(0, 1, 0)
+b2 <- c(0, 0, 0)
+
+is_intersection_3d(m1, b1, m2, b2)
+```
+
+### Get distance between parallel lines with `dist_pll_lines_2d()`
+
+Here is an example of how to calculate the distance between two parallel lines in 2-d space using CoordGeom.
+
+```{r distance}
+
+slope = 3
+b1 = 4
+b2 = 3
+dist_pll_lines_2d(slope, b1, b2)
+
+```
+
+### Determine whether two lines are orthoganol with `is_orthogonal()`
+
+Similarly, you can determine whether two lines are orthogonal (perpendicular) with `is_orthogonal()`.
+
+```{r orthogonal}
+
+m1 <- c(1, 0, 0)
+m2 <- c(0, 1, 0)
+is_orthogonal(m1, m2)
+
+```
+
+### Get distance between points with `get_distance()`
+
+Finally, you can calculate distance between points in space with `get_distance()`.
+
+We provide a few different options for how distance is calculated, with Euclidean being the default.
+
+The full list of options are: "euclidean", "manhattan", "chebyshev", or "minkowski".
+
+```{r}
+x1 <- c(1, 2, 3, 4)
+x2 <- c(5, 6, 7, 8)
+get_distance(x1, x2, metric = "Euclidean")
+
+get_distance(x1, x2, metric = "Manhattan")
+
+get_distance(x1, x2, metric = "Chebyshev")
+
+get_distance(x1, x2, metric = "Minkowski", 3)
+
+```
