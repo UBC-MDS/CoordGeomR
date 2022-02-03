@@ -67,12 +67,12 @@ is_orthogonal(m1, m2)
 
 ### Get distance between points with `get_distance()`
 
-Finally, you can calculate distance between points in space with `get_distance()`. 
+Finally, you can calculate distance between points in space with `get_distance()`.
 
-We provide a few different options for how distance is calculated, with Euclidean
-being the default.  
+We provide a few different options for how distance is calculated, with Euclidean being the default.
 
 The full list of options are: "euclidean", "manhattan", "chebyshev", or "minkowski".
+
 ```{r}
 x1 <- c(1, 2, 3, 4)
 x2 <- c(5, 6, 7, 8)
@@ -85,4 +85,3 @@ get_distance(x1, x2, metric = "Chebyshev")
 get_distance(x1, x2, metric = "Minkowski", 3)
 
 ```
-
