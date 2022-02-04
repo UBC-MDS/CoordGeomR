@@ -6,6 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/UBC-MDS/CoordGeomR/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/CoordGeomR/actions)
+[![codecov](https://codecov.io/gh/UBC-MDS/CoordGeomR/branch/main/graph/badge.svg?token=kVjSWrGYrW)](https://codecov.io/gh/UBC-MDS/CoordGeomR)
 <!-- badges: end -->
 
 A simple coordinate geometry helper package. This package is developed
