@@ -29,13 +29,7 @@ While we are not really reinventing the wheel on coordinate geometry calculation
 
 ## Installation
 
-You can install the released version of CoordGeomR from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("CoordGeomR")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
