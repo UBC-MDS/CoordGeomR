@@ -51,7 +51,7 @@ This is a basic example which shows you how to solve a common problem:
     x2 <- c(5, 6, 7, 8)
     get_distance <- function(x1, x2, metric="Euclidean")
     
-See our full package documentation here: https://ubc-mds.github.io/CoordGeomR/
+Further usage examples can be found in our documentation. See our full package documentation here: https://ubc-mds.github.io/CoordGeomR/
 
 ## Contributing
 
